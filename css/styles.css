@@ -1,0 +1,112 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+#container {
+    z-index: 1;
+}
+
+@font-face {
+    font-family: icons;
+    font-style: normal;
+    font-weight: 400;
+    src: local("icons"), url("../fonts/icons.ttf?v=1.0.0") format("truetype"), url("../fonts/icons.woff?v=1.0.0") format("woff"), url("../fonts/icons.svg?v=1.0.0#icons") format("svg")
+}
+
+#main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -160px;
+    width: 320px;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;
+    z-index: 10;
+}
+
+#main img {
+    width: 96px;
+    height: 96px;
+    margin-top: -48px;
+    border-radius: 48px;
+    z-index: 20;
+}
+
+#main h1 {
+    margin: auto 0px;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+}
+
+#main h3 {
+    margin-top: 5px;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+}
+
+#main a {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+}
+
+#main p [class^="icon-"], [class*=" icon-"] {
+    margin: auto 4px;
+    color: white;
+    font-family: icons;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    font-size: 26px;
+    speak: none;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+#main a {
+    text-decoration: none;
+}
+
+.glass {
+    background-color: rgba(128, 128, 128, 0.4);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+}
+
+.icon-google:before {
+    content: "\e904";
+}
+
+.icon-twitter:before {
+    content: "\e90c";
+}
+
+.icon-facebook:before {
+    content: "\e90d";
+}
+
+.icon-instagram:before {
+    content: "\e90e";
+}
+
+.icon-linkedin:before {
+    content: "\e90f";
+}
+
+.icon-youtube:before {
+    content: "\e910";
+}
+
+.icon-like:before {
+    content: "\e912";
+}
+
+.icon-github:before {
+    content: "\eab0";
+}
