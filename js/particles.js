@@ -41,10 +41,7 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  document.addEventListener('mousemove', onDocumentMouseMove, false);
-  document.addEventListener('touchstart', onDocumentTouchStart, false);
-  document.addEventListener('touchmove', onDocumentTouchMove, false);
-
+  document.addEventListener('pointermove', onPointerMove, false);
   window.addEventListener('resize', onWindowResize, false);
 }
 
@@ -75,27 +72,10 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function onDocumentMouseMove(event) {
+function onPointerMove(event) {
+  if (event.isPrimary === false) return;
   mouseX = event.clientX - windowHalfX;
   mouseY = event.clientY - windowHalfY;
-}
-
-function onDocumentTouchStart(event) {
-  if (event.touches.length === 1) {
-    event.preventDefault();
-
-    mouseX = event.touches[0].pageX - windowHalfX;
-    mouseY = event.touches[0].pageY - windowHalfY;
-  }
-}
-
-function onDocumentTouchMove(event) {
-  if (event.touches.length === 1) {
-    event.preventDefault();
-
-    mouseX = event.touches[0].pageX - windowHalfX;
-    mouseY = event.touches[0].pageY - windowHalfY;
-  }
 }
 
 function animate() {
