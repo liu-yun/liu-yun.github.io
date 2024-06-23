@@ -1,7 +1,8 @@
-var container, stats;
+import * as THREE from 'three';
+
+var container;
 var camera, scene, renderer, group, particle;
-var mouseX = 0,
-  mouseY = 0;
+var mouseX = 0, mouseY = 0;
 
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
@@ -16,26 +17,15 @@ function init() {
   camera.position.z = 1000;
 
   scene = new THREE.Scene();
-
-  var PI2 = Math.PI * 2;
-  var program = function (context) {
-    context.beginPath();
-    context.arc(0, 0, 0.5, 0, PI2, true);
-    context.fill();
-  };
+  scene.fog = new THREE.FogExp2(0x000000, 0.0005);
 
   group = new THREE.Group();
   scene.add(group);
 
   for (var i = 0; i < 1000; i++) {
-    var material = new THREE.SpriteCanvasMaterial({
-      color: Math.random() * 0x808080 + 0x808080,
-      program: program
-    });
-
-    var material2 = new THREE.SpriteMaterial({
+    var material = new THREE.SpriteMaterial({
       map: new THREE.CanvasTexture(generateSprite()),
-      blending: THREE.AdditiveBlending
+      color: Math.random() * 0x808080 + 0x808080,
     });
 
     particle = new THREE.Sprite(material);
@@ -46,13 +36,10 @@ function init() {
     group.add(particle);
   }
 
-  renderer = new THREE.CanvasRenderer();
+  renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
-
-  //stats = new Stats();
-  //container.appendChild(stats.dom);
 
   document.addEventListener('mousemove', onDocumentMouseMove, false);
   document.addEventListener('touchstart', onDocumentTouchStart, false);
@@ -63,27 +50,19 @@ function init() {
 
 function generateSprite() {
   var canvas = document.createElement('canvas');
-  canvas.width = 32;
-  canvas.height = 32;
+  const size = 128;
+  canvas.width = size;
+  canvas.height = size;
   var context = canvas.getContext('2d');
-  var gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height /
-    2, canvas.width / 2);
-  gradient.addColorStop(0, 'rgba(255,255,255,1)');
-  //gradient.addColorStop(0.2, 'rgba(0,255,255,1)');
-  gradient.addColorStop(0.2, rndrnd());
-  gradient.addColorStop(0.6, 'rgba(0,0,64,1)');
-  gradient.addColorStop(1, 'rgba(0,0,0,1)');
-  context.fillStyle = gradient;
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  const centerX = size / 2;
+  const centerY = size / 2;
+  const radius = size / 2;
+
+  context.beginPath();
+  context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+  context.fillStyle = 'rgba(255, 255, 255, 1)';
+  context.fill();
   return canvas;
-}
-
-function rnd() {
-  return Math.floor(Math.random() * 128 + 127);
-}
-
-function rndrnd() {
-  return `rgba(${rnd()},${rnd()},${rnd()},1)`;
 }
 
 function onWindowResize() {
@@ -123,7 +102,6 @@ function animate() {
   requestAnimationFrame(animate);
 
   render();
-  //stats.update();
 }
 
 function render() {

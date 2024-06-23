@@ -7,38 +7,34 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145826794-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-145826794-2');
-    </script>
 </head>
 
 <body>
 	<div id="main" class="glass">
-		<img src="img/a.jpg" />
+		<img src="img/a.png" />
 		<h1>Yun</h1>
 		<h3>Virtual Programmer</h3>
-		<p><a href="https://blog.liuyun.me" target="_blank">Blog</a></p>
-		<p><a href="https://app.liuyun.me" target="_blank">Apps</a></p>
+		<p><a href="https://blog.liuyun.dev" target="_blank">Blog</a></p>
+		<p><a href="https://app.liuyun.dev" target="_blank">Apps</a></p>
 		<p>
 			<a href="https://facebook.com/" target="_blank" class="icon-facebook" aria-label="Facebook"></a>
-			<a href="https://twitter.com/" target="_blank" class="icon-twitter" data-icon="&#xe90c" aria-label="Twitter"></a>
-			<a href="https://instagram.com/" target="_blank" class="icon-instagram" data-icon="&#xe90e" aria-label="Instagram"></a>
+			<a href="https://x.com/" target="_blank" class="icon-twitter" data-icon="&#xe90c" aria-label="Twitter"></a>
+			<a href="https://instagram.com/yunqaq" target="_blank" class="icon-instagram" data-icon="&#xe90e"
+				aria-label="Instagram"></a>
 			<a href="https://github.com/yunowo" target="_blank" class="icon-github" aria-label="GitHub"></a>
 		</p>
 	</div>
 	<div id="container"></div>
-	<script src="js/vendor/three.min.js"></script>
-	<script src="js/vendor/renderers/Projector.js"></script>
-	<script src="js/vendor/renderers/CanvasRenderer.js"></script>
-	<script src="js/vendor/stats.min.js"></script>
 
-	<script src="js/particles.js"></script>
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "./js/vendor/three.module.min.js"
+			}
+		}
+	</script>
+
+	<script src="js/particles.js" type="module"></script>
 
 </body>
 
